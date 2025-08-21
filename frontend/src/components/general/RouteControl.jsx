@@ -9,9 +9,9 @@ import Profile from '../mainComponents/js/Profile';
 function RouteControl() {
   return (
       <Routes>
-        <Route exact path='/' element={<VoteS2S2 />} />
-        <Route exact path='/leaderboard' element={<Leaderboard />} />
-        <Route exact path='/profile' element={<Profile />} />
+        <Route index element={<VoteS2S2 />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
   );
 }

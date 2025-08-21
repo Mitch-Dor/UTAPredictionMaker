@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../css/voteS2S2.css'
-import HeaderBar from '../../sideComponents/js/HeaderBar';
-import { isAdmin } from './backendCalls/http.js';
+import HeaderBar from '../../sideComponents/js/HeaderBar.jsx';
+// import { isAdmin } from './backendCalls/http.js';
 
 
 export default function VoteS2S2() {
@@ -17,10 +17,10 @@ export default function VoteS2S2() {
   //   }
   //   checkAdmin();
   // }, [user]);
-
+  
   return (
     <div id="mainContainer">
-        
+        <HeaderBar />
     </div>
   );
 }

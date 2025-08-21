@@ -1,13 +1,16 @@
 import { useNavigate } from 'react-router-dom';
+import '../css/headerBar.css';
 
 export default function HeaderBar({ }) {
     const navigate = useNavigate();
-    
+
     return (
-        <div>
-            <button id="SingleDraft" className="modeBTN bigBTNs" onClick={() => navigate('/single-draft')}>Single Draft</button>
-            <button id="DraftSandbox" className="modeBTN bigBTNs" onClick={() => navigate('/draft-sandbox')}>Draft Sandbox</button>
-            <button id="MultiDraft" className="modeBTN bigBTNs" onClick={() => navigate('/multi-draft')}>Multiplayer Draft</button>
+        <div className="headerBar">
+            <div className="UTALogo"><img src="/assets/UTALogo.png"></img></div>
+            <div className="links">
+                <div className="headerLink" onClick={() => navigate('/')}>S2S2 Polls</div>
+                <div className="headerLink" onClick={() => navigate('/leaderboard')}>Leaderboard</div>
+            </div>
         </div>
     )
 }
