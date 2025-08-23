@@ -34,6 +34,6 @@ const Polls = require('./database/polls');
 const polls = new Polls(pool);
 exports.polls = polls;
 
-const SignIn = require('./database/signIn');
-const signIn = new SignIn(pool);
-exports.signIn = signIn;
+const Auth = require('./database/auth');
+const auth = new Auth(pool);
+exports.auth = auth;

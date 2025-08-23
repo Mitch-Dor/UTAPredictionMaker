@@ -8,6 +8,10 @@ const cors = require("cors");
 const http = require('http');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const cookieParser = require('cookie-parser');
+const Filter = require('bad-words');
 
 const app = express();
 const server = http.createServer(app);
@@ -45,8 +49,46 @@ app.use(
   }),
 );
 
+// Initialize passport and session - MUST be after session middleware but before routes
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cookieParser(process.env.COOKIE_SECRET))
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+// Initialize the Auth class
+const auth = database.auth;
+
+// Google OAuth strategy configuration
+passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: '/auth/google/callback'
+  },
+  async (accessToken, refreshToken, profile, done) => {
+    try {
+      // Use the signIn function to handle user sign-in and registration
+      const user = await auth.signIn(profile.id, profile.displayName, profile.emails[0].value, profile.photos && profile.photos.length > 0 ? profile.photos[0].value : null);
+      done(null, user);
+    } catch (error) {
+      done(error, null);
+    }
+  }
+));
+
+passport.serializeUser((user, done) => {
+  done(null, user.user_id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await auth.getUser(id);
+    done(null, user);
+  } catch (error) {
+    done(error, null);
+  }
+});
 
 // Serve static files from the React frontend app in production
 if (process.env.NODE_ENV === 'production') {
@@ -61,9 +103,10 @@ app.get('/ping', (req, res) => {
 });
 
 // Routes - load AFTER all middleware is set up
-require('./routes/manage.js')(app, database);
+require('./routes/manage.js')(app, database, Filter);
 require('./routes/polls.js')(app, database);
-require('./routes/signIn.js')(app, database);
+require('./routes/auth.js')(app, database, passport, process.env.NODE_ENV, process.env.HEROKU_APP_URL);
+
 
 // Serve the frontend build
 if (process.env.NODE_ENV === 'production') {
