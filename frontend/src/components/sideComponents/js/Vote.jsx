@@ -8,24 +8,24 @@ export default function Vote({ poll }) {
 
     useEffect(() => {
         function updateCountdown() {
-        const now = new Date();
-        const end = new Date(poll.end_date);
-        const diff = end - now;
+            const now = new Date();
+            const end = new Date(poll.end_date);
+            const diff = end - now;
 
-        if (diff <= 0) {
-            setTimeLeft("Expired");
-            return;
-        }
+            if (diff <= 0) {
+                setTimeLeft("Expired");
+                return;
+            }
 
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        setTimeLeft(
-            `${hours.toString().padStart(2, "0")}:` +
-            `${minutes.toString().padStart(2, "0")}:` +
-            `${seconds.toString().padStart(2, "0")}`
-        );
+            setTimeLeft(
+                `${hours.toString().padStart(2, "0")}:` +
+                `${minutes.toString().padStart(2, "0")}:` +
+                `${seconds.toString().padStart(2, "0")}`
+            );
         }
 
         updateCountdown(); // initial run
@@ -57,7 +57,7 @@ export default function Vote({ poll }) {
                 </div>
             )}
             <div className="pollTitle">{poll.title}</div>
-            <div className="availableUntil">{timeLeft !== "Expired" ? `Closes In: ${timeLeft}` : "Expired"}</div>
+            <div className="availableUntil">{timeLeft !== "Expired" ? `Closes In: ${timeLeft}` : `Expired On ${new Date(poll.end_date).toLocaleString()}`}</div>
             {Array.from({ length: numRows }).map((_, i) => {
                 // slice gives you the chunk for this row
                 const rowOptions = poll.options.slice(i * 3, i * 3 + 3);
@@ -66,7 +66,8 @@ export default function Vote({ poll }) {
                 <div key={i} className="pollRow">
                     {rowOptions.map((opt) => (
                     <div key={opt.selection_id} className={`pollOption ${poll.user_selection === opt.selection_id ? 'selected' : ''}`}>
-                        <span className={`pollOptionPercentageCover ${poll.correct_id !== null ? (opt.selection_id === poll.correct_id ? 'winner' : 'loser') : 'undecided'}`} style={{ width: `${(opt.totalSelections / poll.totalSelections) * 100}%` }} ></span>
+                        <span className={`pollOptionPercentageCover`} style={{ width: `${(opt.totalSelections / poll.totalSelections) * 100}%` }} ></span>
+                        <span className={`voteResult ${poll.correct_id !== null ? (opt.selection_id === poll.correct_id ? 'winner' : 'loser') : 'undecided'}`} ></span>
                         <img className='pollImage' 
                             src={`https://play.pokemonshowdown.com/sprites/ani/${opt.str.toLowerCase()}.gif`} 
                             alt={opt.str} 

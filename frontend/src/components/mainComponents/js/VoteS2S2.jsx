@@ -24,8 +24,8 @@ export default function VoteS2S2() {
   useEffect(() => {
     const mockPolls = [
       {title: 'Who Wins?', options: [{str: "Philadelphia Phanpys", selection_id: 9, totalSelections: 4}, {str: "Team4", selection_id: 10, totalSelections: 6}], poll_id: 4, end_date: "2025-08-20T15:00:00Z", totalSelections: 10, correct_id: 10},
-      {title: 'Who Is Stronger?', options: [{str: "Arceus", selection_id: 6, totalSelections: 7}, {str: "Dialga", selection_id: 7, totalSelections: 1}, {str: "Palkia", selection_id: 8, totalSelections: 2}], poll_id: 3, end_date: "2025-08-18T23:59:59Z", totalSelections: 10, correct_id: 7},
-      {title: 'Who Wins?', options: [{str: "Team1", selection_id: 4, totalSelections: 4}, {str: "Team2", selection_id: 5, totalSelections: 6}], poll_id: 2, end_date: "2025-08-23T02:40:00Z", totalSelections: 10, correct_id: null},
+      {title: 'Who Is Stronger?', options: [{str: "Arceus", selection_id: 6, totalSelections: 7}, {str: "Dialga", selection_id: 7, totalSelections: 1}, {str: "Palkia", selection_id: 8, totalSelections: 2}, {str: "Giratina", selection_id: 11, totalSelections: 2}], poll_id: 3, end_date: "2025-08-18T23:59:59Z", totalSelections: 10, correct_id: 7},
+      {title: 'Who Wins?', options: [{str: "Team1", selection_id: 4, totalSelections: 4}, {str: "Team2", selection_id: 5, totalSelections: 6}], poll_id: 2, end_date: "2025-08-25T02:40:00Z", totalSelections: 10, correct_id: null},
       {title: 'Who Is Stronger?', options: [{str: "Groudon", selection_id: 1, totalSelections: 3}, {str: "Kyogre", selection_id: 2, totalSelections: 4}, {str: "Rayquaza", selection_id: 3, totalSelections: 3}], poll_id: 1, end_date: "2025-08-27T09:30:00Z", totalSelections: 10, correct_id: null},
     ];
     const mockUserPolls = [

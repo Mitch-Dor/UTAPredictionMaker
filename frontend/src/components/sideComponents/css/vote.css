@@ -49,6 +49,7 @@
 .pollOption {
     width: 180px;
     height: 60px;
+    padding: 5px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -60,7 +61,7 @@
 }
 
 .pollOption.selected {
-    background-color: rgb(207, 207, 207);
+    border: 1px solid black;
 }
 
 .pollOptionPercentageCover {
@@ -69,19 +70,30 @@
     top: 0;
     left: 0;
     height: 100%;
+    z-index: 3;
+    background-color: rgba(80, 78, 78, 0.3);
+}
+
+.voteResult {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
     z-index: 2;
 }
 
-.pollOptionPercentageCover.winner {
-    background-color: rgba(12, 146, 12, 0.569);
+.voteResult.winner {
+    background-color: rgba(12, 146, 12, 0.2);
 }
 
-.pollOptionPercentageCover.loser {
-    background-color: rgba(146, 12, 12, 0.569);
+.voteResult.loser {
+    background-color: rgba(146, 12, 12, 0.2);
 }
 
-.pollOptionPercentageCover.undecided {
-    background-color: rgba(80, 78, 78, 0.569);
+.voteResult.undecided {
+    background-color: none;
 }
 
 .pollImage {
