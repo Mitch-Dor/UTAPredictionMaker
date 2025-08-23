@@ -4,5 +4,23 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
-    background-color: #784892;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.voteContent {
+    height: calc(90% - 80px);
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.voteContent::-webkit-scrollbar {
+    display: none;
 }
