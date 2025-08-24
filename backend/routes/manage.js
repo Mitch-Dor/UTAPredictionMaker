@@ -5,6 +5,7 @@ module.exports = function (app, database, Filter) {
         if (cleanedName !== req.body.display_name) {
             console.error('Invalid Name');
             res.sendStatus(440);
+            return;
         }
         database.manage.putDisplayName(req.body.user_id, req.body.display_name, req.body.profile_picture).then(data => {
             res.json(data);
