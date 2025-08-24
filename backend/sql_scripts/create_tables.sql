@@ -11,7 +11,7 @@ CREATE TABLE users (
 CREATE TABLE polls (
     poll_id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
-    end_date DATE NOT NULL,
+    end_date TIMESTAMPTZ NOT NULL,
     correct_id INT
     -- foreign key to poll_options intentionally left out to avoid circular dependency
 );
