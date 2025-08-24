@@ -30,7 +30,7 @@ export default function HeaderBar({ setUser }) {
             <div className="UTALogo"  onClick={() => navigate('/')}><img src="/assets/UTALogo.png"></img></div>
             <div className="links">
                 <div className="headerLink" onClick={() => navigate('/')}>S2S2 Polls</div>
-                <div className="headerLink" onClick={() => navigate('/leaderboard')}>Leaderboard</div>
+                <div className="headerLink" onClick={() => navigate('/leaderboard')}>Leader<wbr />board</div>
             </div>
             <div className="loginContainer">
                 <Login setUser={setUser} navigateTo={() => {navigate('/profile')}} />

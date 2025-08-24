@@ -143,6 +143,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .leaderboardEntryNumber {
@@ -151,4 +152,76 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 720px) { 
+    .leaderboard {
+        max-width: calc(90% - 40px);
+        font-size: 12px;
+    }
+
+    .leaderBoardTitle {
+        width: 90%;
+    }
+
+    .leaderboardHeader {
+        width: 90%;
+        height: 80px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .leaderboardHeaderPlace {
+        width: 30px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .leaderboardHeaderImage {
+        width: 40px;
+        height: 40px;
+    }
+
+    .leaderboardHeaderName {
+        width: 100px;
+        height: 40px;
+    }
+
+    .leaderboardHeaderNumber {
+        width: 40px;
+        height: 40px;
+    }
+
+    .leaderboardEntry {
+        width: 90%;
+        height: 80px;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .leaderboardEntryPlace {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    .leaderboardEntryImage {
+        width: 40px;
+        height: 40px;
+    }
+
+    .leaderboardEntryImage img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .leaderboardEntryName {
+        width: 100px;
+        height: 640px;
+    }
+
+    .leaderboardEntryNumber {
+        width: 40px;
+        height: 40px;
+    }
 }

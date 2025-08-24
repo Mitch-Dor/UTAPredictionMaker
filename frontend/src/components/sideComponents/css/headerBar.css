@@ -90,3 +90,8 @@ img {
   }
 }
 
+@media (max-width: 720px) { 
+  .links {
+    font-size: 12px;
+  }
+}

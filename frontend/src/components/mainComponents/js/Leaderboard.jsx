@@ -10,9 +10,7 @@ export default function Leaderboard() {
   useEffect(() => {
     async function fetchLeaderboardData() {
       const leaderboard = await getNumberCorrectResponses();
-      console.log(leaderboard);
       leaderboard.sort(function(a, b){return b.correct_count - a.correct_count});
-      console.log(leaderboard);
       setLeaderboardData(leaderboard);
     }
 

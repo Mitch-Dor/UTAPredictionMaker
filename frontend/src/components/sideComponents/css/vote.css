@@ -125,3 +125,20 @@
 .optionText {
     text-align: center;
 }
+
+@media (max-width: 720px) {
+    .aPoll {
+        width: calc(95% - 50px);
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .pollRow {
+        flex-direction: column;
+        height: 240px;
+    }
+
+    .pollOption {
+        margin-bottom: 15px;
+    }
+}
