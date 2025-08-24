@@ -11,7 +11,7 @@ export default function Leaderboard() {
     async function fetchLeaderboardData() {
       const leaderboard = await getNumberCorrectResponses();
       console.log(leaderboard);
-      leaderboard.sort(function(a, b){return a.correct_count - b.correct_count});
+      leaderboard.sort(function(a, b){return b.correct_count - a.correct_count});
       console.log(leaderboard);
       setLeaderboardData(leaderboard);
     }

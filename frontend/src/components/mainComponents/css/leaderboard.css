@@ -27,13 +27,12 @@
 
 .leaderboard {
     width: 500px;
-    max-height: 90%;
+    max-height: 80%;
     overflow-y: scroll;
     padding: 20px;
     background-color: gray;
     border-radius: 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

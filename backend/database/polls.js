@@ -149,14 +149,16 @@ class Polls {
       this.db.query(
         `
         SELECT 
-        count(*) AS correct_count,
+        u.user_id,
         u.display_name,
         u.name,
-        u.profile_picture
-        FROM polls p
-        JOIN user_choices uc ON p.correct_id = uc.option_id
-        JOIN users u ON uc.user_id = u.user_id
-        GROUP BY u.user_id, u.display_name, u.name, u.profile_picture;
+        u.profile_picture,
+        COUNT(CASE WHEN uc.option_id = p.correct_id THEN 1 END) AS correct_count
+        FROM user_choices uc
+        LEFT JOIN users u ON uc.user_id = u.user_id
+        LEFT JOIN polls p ON p.poll_id = uc.poll_id
+        GROUP BY u.user_id, u.display_name, u.name, u.profile_picture
+        ORDER BY correct_count DESC;
         `,
         [],
         (err, res) => {
