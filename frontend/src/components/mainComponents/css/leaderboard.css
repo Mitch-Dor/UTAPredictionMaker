@@ -1,0 +1,155 @@
+#leaderboardContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.leaderboardContent {
+    height: calc(90% - 80px);
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.leaderboardContent::-webkit-scrollbar {
+    display: none;
+}
+
+.leaderboard {
+    width: 500px;
+    max-height: 90%;
+    overflow-y: scroll;
+    padding: 20px;
+    background-color: gray;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.leaderboard::-webkit-scrollbar {
+    display: none;
+}
+
+.leaderBoardTitle {
+    width: 460px;
+    height: 60px;
+    padding: 20px;
+    color: white;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    background-color: rgb(198, 198, 198);
+    margin-bottom: 40px;
+}
+
+.leaderboardHeader {
+    width: 460px;
+    height: 80px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    background-color: rgb(193, 193, 193);
+    border-radius: 20px;
+}
+
+.leaderboardHeaderPlace {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboardHeaderImage {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboardHeaderName {
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboardHeaderNumber {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboardEntry {
+    width: 460px;
+    height: 80px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    background-color: rgb(193, 193, 193);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.leaderboardEntryPlace {
+    background-color: darkgray;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboardEntryImage {
+    width: 60px;
+    height: 60px;
+}
+
+.leaderboardEntryImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: fill;
+}
+
+.leaderboardEntryName {
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboardEntryNumber {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

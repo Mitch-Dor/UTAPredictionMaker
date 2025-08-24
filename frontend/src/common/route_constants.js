@@ -12,5 +12,6 @@ export const routes = {
     UPDATE_PROFILE: `${getBaseUrl()}/PUT/profile`,
     GET_POLLS: `${getBaseUrl()}/GETallPolls`,
     GET_USER_RESPONSES: `${getBaseUrl()}/GETuserResponses`,
-    POST_USER_RESPONSE: `${getBaseUrl()}/POSTuserResponse`
+    POST_USER_RESPONSE: `${getBaseUrl()}/POSTuserResponse`,
+    GET_NUMBER_CORRECT_RESPONSES: `${getBaseUrl()}/GETcorrectResponses`
 };

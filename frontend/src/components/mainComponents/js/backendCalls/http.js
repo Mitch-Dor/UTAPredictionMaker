@@ -70,3 +70,14 @@ export async function postUserResponse(user_id, poll_id, option_id) {
     });
     return await pollData.json();
 }
+
+export async function getNumberCorrectResponses() {
+    const numberCorrectResponses = await fetch(routes.GET_NUMBER_CORRECT_RESPONSES, {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+    return await numberCorrectResponses.json();
+}

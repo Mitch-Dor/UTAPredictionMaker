@@ -28,4 +28,14 @@ module.exports = function (app, database) {
             res.sendStatus(401);
         });
     })
+
+    app.get('/GETcorrectResponses', (req, res) => {
+        database.polls.getNumberCorrectResponses().then(data => {
+            res.json(data);
+        })
+        .catch(error => {
+            console.error('Error fetching polls:', error);
+            res.sendStatus(401);
+        });
+    });
 };

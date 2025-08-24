@@ -143,6 +143,33 @@ class Polls {
       });
     });
   }
+
+  async getNumberCorrectResponses() {
+    return new Promise((resolve, reject) => {
+      this.db.query(
+        `
+        SELECT 
+        count(*) AS correct_count,
+        u.display_name,
+        u.name,
+        u.profile_picture
+        FROM polls p
+        JOIN user_choices uc ON p.correct_id = uc.option_id
+        JOIN users u ON uc.user_id = u.user_id
+        GROUP BY u.user_id, u.display_name, u.name, u.profile_picture;
+        `,
+        [],
+        (err, res) => {
+          if (err) {
+            console.error(err.message);
+            reject(err);
+          } else {
+            resolve(res.rows);
+          }
+        }
+      );
+    });
+  }
 }
 
 module.exports = Polls;
