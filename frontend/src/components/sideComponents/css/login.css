@@ -1,0 +1,53 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4285F4;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.logout-button {
+  padding: 8px 16px;
+  background-color: #f44336;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.logout-button a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+.profile-picture {
+  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+} 
+
+.profile-icon {
+    border-radius: 50%;
+    object-fit: fill;
+}

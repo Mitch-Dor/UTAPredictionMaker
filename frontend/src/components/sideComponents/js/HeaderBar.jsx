@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SignIn from './SignIn';
+import Login from './Login';
 import WaveSeparatorBottom from './WaveSeparatorBottom';
 import '../css/headerBar.css';
 
-export default function HeaderBar({ }) {
+export default function HeaderBar({ setUser }) {
     const navigate = useNavigate();
     const [streaks, setStreaks] = useState([]);
 
@@ -33,7 +33,7 @@ export default function HeaderBar({ }) {
                 <div className="headerLink" onClick={() => navigate('/leaderboard')}>Leaderboard</div>
             </div>
             <div className="loginContainer">
-                <SignIn />
+                <Login setUser={setUser} navigateTo={() => {navigate('/profile')}} />
             </div>
             <div className="shootingBackground">
                 {streaks.map((streak) => (

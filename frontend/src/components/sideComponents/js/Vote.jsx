@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { FaLock } from "react-icons/fa";
 import '../css/vote.css';
+import { postUserResponse } from "../../mainComponents/js/backendCalls/http";
 
-export default function Vote({ poll }) {
+export default function Vote({ poll, user, setPolls }) {
     const [timeLeft, setTimeLeft] = useState("");
+    const [selectedOption, setSelectedOption] = useState(null);
     const numRows = Math.ceil(poll.options.length / 3);
-
     useEffect(() => {
         function updateCountdown() {
             const now = new Date();
@@ -32,7 +33,7 @@ export default function Vote({ poll }) {
         const interval = setInterval(updateCountdown, 1000);
 
         return () => clearInterval(interval); // cleanup
-    }, []);
+    }, [poll.end_date]);
     
     function checkVoteable() {
         // If the user voted already
@@ -44,9 +45,43 @@ export default function Vote({ poll }) {
             return false;
         }
         // If the user is not logged in
-    
+        if (!user) {
+            return false;
+        }
     
         return true;
+    }
+
+    async function submitVote() {
+        try {
+            // 👇 assuming you have `user` globally or via props/context
+            const response = await postUserResponse(user.user_id, poll.poll_id, selectedOption);
+            if (!response[0].user_id) { // If we got anything back it's good
+                console.error("Error submitting user response.");
+                return;
+            }
+            // update local poll state so UI updates
+            setPolls(prevPolls => prevPolls.map(p => {
+                if (p.poll_id !== poll.poll_id) return p;
+
+                const updatedOptions = p.options.map(opt =>
+                    opt.option_id === selectedOption
+                        ? { ...opt, totalSelections: (opt.totalSelections || 0) + 1 }
+                        : opt
+                );
+
+                return {
+                    ...p,
+                    user_selection: selectedOption,
+                    options: updatedOptions,
+                    totalSelections: p.totalSelections + 1
+                };
+            }));
+
+            setSelectedOption(null); // clear highlight after submission
+        } catch (err) {
+            console.error("Error submitting vote:", err);
+        }
     }
     
     return (
@@ -65,9 +100,9 @@ export default function Vote({ poll }) {
                 return (
                 <div key={i} className="pollRow">
                     {rowOptions.map((opt) => (
-                    <div key={opt.selection_id} className={`pollOption ${poll.user_selection === opt.selection_id ? 'selected' : ''}`}>
+                    <div key={opt.option_id} className={`pollOption ${poll.user_selection === opt.option_id ? 'selected' : ''} ${selectedOption === opt.option_id ? 'selectedOption' : ''}`} onClick={() => {selectedOption === opt.option_id ? submitVote() : setSelectedOption(opt.option_id)}} >
                         <span className={`pollOptionPercentageCover`} style={{ width: `${(opt.totalSelections / poll.totalSelections) * 100}%` }} ></span>
-                        <span className={`voteResult ${poll.correct_id !== null ? (opt.selection_id === poll.correct_id ? 'winner' : 'loser') : 'undecided'}`} ></span>
+                        <span className={`voteResult ${poll.correct_id !== null ? (opt.option_id === poll.correct_id ? 'winner' : 'loser') : 'undecided'}`} ></span>
                         <img className='pollImage' 
                             src={`https://play.pokemonshowdown.com/sprites/ani/${opt.str.toLowerCase()}.gif`} 
                             alt={opt.str} 

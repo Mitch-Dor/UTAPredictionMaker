@@ -18,18 +18,11 @@ class Auth {
                         resolve(res.rows[0]);
                     } else {
                         // User does not exist, add them to the database and sign in
-                        this.db.query('INSERT INTO users (user_id, name, profile_picture, email) VALUES ($1, $2, $3, $4)', [user_id, name, pfp_url, email], function(err) {
+                        this.db.query('INSERT INTO users (user_id, name, profile_picture, email) VALUES ($1, $2, $3, $4) RETURNING *', [user_id, name, pfp_url, email], function(err, res) {
                             if (err) {
                                 reject(err);
                             } else {
-                                // After inserting, get the user to return it
-                                this.db.query('SELECT * FROM users WHERE user_id = $1', [user_id], (err, res) => {
-                                    if (err) {
-                                        reject(err);
-                                    } else {
-                                        resolve(res.rows[0]);
-                                    }
-                                });
+                                resolve(res.rows[0]);
                             }
                         });
                     }

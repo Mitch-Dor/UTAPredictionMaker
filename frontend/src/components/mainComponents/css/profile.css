@@ -1,0 +1,94 @@
+.profileContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.profileContent {
+    height: calc(90% - 80px);
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+.profileContent::-webkit-scrollbar {
+    display: none;
+}
+
+.profilePicture {
+    width: 160px;
+    height: 160px;
+}
+
+.profilePicture img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: fill;
+}
+
+.profileInformationDisplay {
+    width: 40%;
+    height: 40%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.switchModes {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: gray;
+    cursor: pointer;
+}
+
+.switchModes:hover {
+    text-decoration: underline;
+}
+
+.profileAttribute {
+    width: 80%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.25em;
+}
+
+.profileAttributeLabel {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.profileAttributeText {
+    width: 65%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.submitProfileChanges {
+    padding: 8px 16px;
+  background-color: #4285F4;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
