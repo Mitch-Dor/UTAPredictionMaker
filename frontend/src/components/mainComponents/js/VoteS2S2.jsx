@@ -3,6 +3,7 @@ import '../css/voteS2S2.css'
 import HeaderBar from '../../sideComponents/js/HeaderBar.jsx';
 import Vote from '../../sideComponents/js/Vote.jsx';
 import { getPolls, getUserResponses } from './backendCalls/http.js';
+import Discord from '../../sideComponents/js/Discord.jsx';
 
 // import { isAdmin } from './backendCalls/http.js';
 
@@ -53,6 +54,7 @@ export default function VoteS2S2() {
     <div id="mainContainer">
         <HeaderBar setUser={setUser} />
         <div className="voteContent">
+          <Discord />
           {polls.map((poll) => {
             return <Vote key={poll.poll_id} poll={poll} setPolls={setPolls} user={user} />
           })}

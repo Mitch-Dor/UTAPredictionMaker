@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/profile.css'
 import HeaderBar from '../../sideComponents/js/HeaderBar.jsx';
 import { updateProfile } from './backendCalls/http.js';
+import Discord from '../../sideComponents/js/Discord.jsx';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -43,6 +44,7 @@ export default function Profile() {
     <div className="profileContainer">
         <HeaderBar setUser={setUser} />
         <div className="profileContent">
+          <Discord />
           <div className="profilePicture">
             <img src={`${user && user.profile_picture ? user.profile_picture : '/assets/UTALogo.png'}`} />
           </div>

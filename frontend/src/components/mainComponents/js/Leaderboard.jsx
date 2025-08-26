@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getNumberCorrectResponses } from "./backendCalls/http";
 import HeaderBar from "../../sideComponents/js/HeaderBar";
 import '../css/leaderboard.css';
+import Discord from "../../sideComponents/js/Discord";
 
 export default function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState([]);
@@ -24,6 +25,7 @@ export default function Leaderboard() {
     <div id="leaderboardContainer">
       <HeaderBar setUser={setUser} />
       <div className="leaderboardContent">
+        <Discord />
         <div className="leaderboard">
           <div className="leaderBoardTitle">Leaderboard</div>
           <div className="leaderboardHeader">
