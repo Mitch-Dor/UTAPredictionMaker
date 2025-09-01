@@ -75,7 +75,7 @@ class Polls {
                         GROUP BY option_id
                     ) u ON u.option_id = po.option_id
                     GROUP BY p.poll_id, p.title, p.end_date, p.correct_id
-                    ORDER BY p.poll_id;`, (err, res) => {
+                    ORDER BY p.poll_id desc;`, (err, res) => {
         if (err) {
           console.error(err.message);
           reject(err);
